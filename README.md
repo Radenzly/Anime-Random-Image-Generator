@@ -16,4 +16,7 @@ A cute little **Anime Image Generator** made with HTML & JavaScript~
 3. Watch the magic happen!
    - Image appears  
    - Signature appears  
-   - Source appears  
+   - Source appears
+
+## Example of the Web
+![Anime Image](https://files.catbox.moe/adjgwa.png)
