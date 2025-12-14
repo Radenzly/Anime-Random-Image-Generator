@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="eu">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        ANIME GENERATOR
+    </title>
+    </head>
+    <body>
+    <h1>ANIME GENERATOR V1</h1>
+    <button onclick="fetchData()">Process</button>
+    <div style="margin-top: 20px">
+    <script>
+        async function fetchData() {
+            try {
+                    const response = await fetch("https://api.waifu.im/search?included_tags=waifu")
+                    const data = await response.json()
+                    const gambar = data.images[0].url;
+                    const descriptions = data.images[0].signature;
+                    const source = data.images[0].source
+                    const old = document.getElementById("nsfw")
+                    if(old) old.remove()
+                    const image = document.createElement("img")
+                    image.style = "border: 2px solid black"
+                    image.id = "nsfw";
+                    image.src = gambar;
+                    image.alt = "Anime SFW";
+                    image.height = 350;
+                    image.width = 350;
+                    document.body.appendChild(image);
+                    const olddesc = document.getElementById("desc")
+                    if(olddesc) olddesc.remove()
+                    const description = document.createElement("p")
+                    description.innerHTML = "Signature: " + descriptions;
+                    description.id = "desc";
+                    document.body.append(description)
+                    const oldsource = document.getElementById("source")
+                    if(oldsource) oldsource.remove()
+                    const sources = document.createElement("p")
+                    sources.id = "source";
+                    sources.innerHTML = "Source: " + source;
+                    document.body.append(sources)
+            } catch (err) {
+                console.error(err)
+            }
+
+        }
+    </script>
+    </div>
+    </body>
+</html>
